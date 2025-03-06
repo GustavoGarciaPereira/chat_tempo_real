@@ -94,12 +94,22 @@ app.layout = html.Div([
     
     # Tabelas Comparativas
     html.Div([
-        dash_table.DataTable(
-            id='team-comparison',
-            columns=[{"name": i, "id": i} for i in ['Estatística', 'Time1', 'Time2']],
-            style_table={'overflowX': 'auto'},
-            className='m-3'
-        )
+        html.Div([
+            dash_table.DataTable(
+                id='team-comparison',
+                columns=[{"name": i, "id": i} for i in ['Estatística', 'Time1', 'Time2']],
+                style_table={'overflowX': 'auto'},
+                style_cell={
+                    'textAlign': 'left',
+                    'padding': '10px',
+                    'backgroundColor': 'rgb(245, 245, 245)'
+                },
+                style_header={
+                    'fontWeight': 'bold',
+                    'backgroundColor': 'rgb(230, 230, 230)'
+                }
+            )
+        ], className='m-3 p-3 border rounded')
     ])
 ], className='container')
 
