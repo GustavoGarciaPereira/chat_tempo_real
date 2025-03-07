@@ -115,12 +115,16 @@ app.layout = html.Div([
 
 # ========== Callbacks ==========
 @app.callback(
-    [Output('tactical-heatmap', 'figure'),
-     Output('player-stats', 'figure'),
-     Output('win-prediction', 'figure'),
-     Output('team-comparison', 'data')],
-    [Input('match-selector', 'value'),
-     Input('live-update', 'n_intervals')]
+    [
+        Output('tactical-heatmap', 'figure'),
+        Output('player-stats', 'figure'),
+        Output('win-prediction', 'figure'),
+        Output('team-comparison', 'data')
+    ],
+    [
+        Input('match-selector', 'value'),
+        Input('live-update', 'n_intervals')
+    ]
 )
 def update_dashboard(selected_match, n):
     # Heatmap Tático Atualizado
