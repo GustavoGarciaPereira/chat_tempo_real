@@ -1,0 +1,45 @@
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="text-center">Login</h3>
+                </div>
+                <div class="card-body">
+                    <!-- Formulário de Login -->
+                    <form method="post">
+                        {% csrf_token %}  <!-- Token de segurança do Django -->
+                        
+                        <!-- Campo de Usuário -->
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Usuário</label>
+                            <input type="text" name="username" class="form-control" id="username" required>
+                        </div>
+
+                        <!-- Campo de Senha -->
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Senha</label>
+                            <input type="password" name="password" class="form-control" id="password" required>
+                        </div>
+
+                        <!-- Botão de Login -->
+                        <button type="submit" class="btn btn-primary w-100">Entrar</button>
+                    </form>
+
+                    <!-- Mensagens de Erro -->
+                    {% if form.errors %}
+                        <div class="alert alert-danger mt-3">
+                            Usuário ou senha incorretos. Por favor, tente novamente.
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="card-footer text-center">
+                    <small class="text-muted">
+                        Não tem uma conta? <a href="{% url 'signup' %}">Cadastre-se</a>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="text-center">Cadastro</h3>
+                </div>
+                <div class="card-body">
+                    <!-- Formulário de Cadastro -->
+                    <form method="post">
+                        {% csrf_token %}  <!-- Token de segurança do Django -->
+                        
+                        <!-- Campo de Usuário -->
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Usuário</label>
+                            <input type="text" name="username" class="form-control" id="username" required>
+                            <small class="text-muted">Obrigatório. 150 caracteres ou menos. Letras, números e @/./+/-/_ apenas.</small>
+                        </div>
+
+                        <!-- Campo de Senha -->
+                        <div class="mb-3">
+                            <label for="password1" class="form-label">Senha</label>
+                            <input type="password" name="password1" class="form-control" id="password1" required>
+                            <small class="text-muted">
+                                <ul>
+                                    <li>Sua senha não pode ser muito parecida com suas outras informações pessoais.</li>
+                                    <li>Sua senha precisa conter pelo menos 8 caracteres.</li>
+                                    <li>Sua senha não pode ser uma senha comum.</li>
+                                    <li>Sua senha não pode ser totalmente numérica.</li>
+                                </ul>
+                            </small>
+                        </div>
+
+                        <!-- Campo de Confirmação de Senha -->
+                        <div class="mb-3">
+                            <label for="password2" class="form-label">Confirme a Senha</label>
+                            <input type="password" name="password2" class="form-control" id="password2" required>
+                            <small class="text-muted">Digite a mesma senha novamente, para verificação.</small>
+                        </div>
+
+                        <!-- Botão de Cadastro -->
+                        <button type="submit" class="btn btn-primary w-100">Cadastrar</button>
+                    </form>
+
+                    <!-- Mensagens de Erro -->
+                    {% if form.errors %}
+                        <div class="alert alert-danger mt-3">
+                            {% for field, errors in form.errors.items %}
+                                {% for error in errors %}
+                                    {{ error }}<br>
+                                {% endfor %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="card-footer text-center">
+                    <small class="text-muted">
+                        Já tem uma conta? <a href="{% url 'login' %}">Faça login</a>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

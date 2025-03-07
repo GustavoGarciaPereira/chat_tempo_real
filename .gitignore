@@ -1,1 +1,4 @@
 venv
+*/media
+realtime_chat
+realtime_project/db.sqlite3

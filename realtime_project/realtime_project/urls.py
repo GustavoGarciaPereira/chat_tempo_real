@@ -17,8 +17,15 @@ Including another URLconf
 # realtime_project/urls.py
 from django.contrib import admin
 from django.urls import path, include
-
+from django.contrib.auth import views as auth_views  # Importe as views de autenticação
+from chat.views import signup
+from django.conf import settings
+from django.conf.urls.static import static  
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('chat/', include('chat.urls')),
-]
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),  # URL de logout
+    path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),  # URL de login
+    path('signup/', signup, name='signup'),
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+

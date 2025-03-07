@@ -42,7 +42,7 @@ INSTALLED_APPS = [
 ]
 # Configuração do Channels
 ASGI_APPLICATION = 'realtime_project.asgi.application'
-
+WSGI_APPLICATION = 'realtime_project.wsgi.application'
 # Configuração do Channel Layer com InMemoryChannelLayer (sem Redis)
 CHANNEL_LAYERS = {
     "default": {
@@ -131,3 +131,10 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+LOGIN_REDIRECT_URL = 'admin/'
+LOGOUT_REDIRECT_URL = 'admin/'
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+    "/var/www/static/",
+]
+STATIC_ROOT = 'media/'
